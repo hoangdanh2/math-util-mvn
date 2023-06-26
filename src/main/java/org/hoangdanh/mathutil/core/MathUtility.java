@@ -21,21 +21,41 @@ public class MathUtility {
 //    21 giai thừa kiểu long chứa ko được
 //    hàm chỉ cho phép n = 0..20
 //    đưa n > 20; CHỬI, NÉM RA EXCEPTION
+//    public static long getFactorial(int n) {
+//        if (n < 0 || n > 20) {
+//            throw new IllegalArgumentException("Invalid n. n must be between 0..20, plz");
+//        }
+//        if (n == 0 || n == 1) {
+//            return 1;
+//        }
+//        
+//        long product = 1; // Biến gom các tích nhân với nhau
+//        for (int i = 2; i <= n; i++) {
+//            product *= i;
+//        }
+//        return product;
+//    }
     public static long getFactorial(int n) {
+        
         if (n < 0 || n > 20) {
             throw new IllegalArgumentException("Invalid n. n must be between 0..20, plz");
         }
+        
         if (n == 0 || n == 1) {
             return 1;
         }
         
-        long product = 1; // Biến gom các tích nhân với nhau
-        for (int i = 2; i <= n; i++) {
-            product *= i;
-        }
-        return product;
+        return n * getFactorial(n - 1);
+        // đệ quy - recursion
+        
     }
 }
+// 5! = 1.2.3.4.5 = 4! x 5 = 5 x 4!
+// 4! = 4 x 3!
+// 3! = 3 x 2!
+// 2! = 2 x 1!
+// 1! = 1; // DỪNG
+// N! = N X (N - 1)
 
 // TDD: Test Driven Development là kĩ thuật viết code cí chất lượng bằng cách code và test case và test run được thực thi đan xen
 // song song, vừa viết code, vừa test
